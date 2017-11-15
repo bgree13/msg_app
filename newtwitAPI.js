@@ -1,9 +1,9 @@
 var Twit = require('twit')
 var T = new Twit({
-    consumer_key:         'PA0QGKBoQukdqvMZISL5oFPcM',
-    consumer_secret:      'z7mgTNIQwBEVW9lEJAfOjuoR3jDMfmkUXtyYfUYE6MTNIhMoWw',
-    access_token:         '728958375443189761-RvopIp6Ci1f7GYR9aLsJRvqqQINic95',
-    access_token_secret:  'UI344Bf7Erca3cD4kEYZ1s5IVXoH6WS1QKxFFkYmH0s83'
+    consumer_key:         'OQwfxQzPOZ5iEBhRpv0UuVg6C',
+    consumer_secret:      'piV56j1K0K5jAPSf3Dq64Gro613SCqNXHtmHAJN7kdG2Ec2xhk',
+    access_token:         '728958375443189761-zuc3asrcEEDptPsLbC9gKoVmFr84W1d',
+    access_token_secret:  'kx0R8ui9kINBvT5I1d3LQIGOi1ERU3kTDBDyHb9Jbf9gI'
 })
 
 //T.get('followers/ids', { screen_name: 'MochaHues' },  function (err, data, response) {
