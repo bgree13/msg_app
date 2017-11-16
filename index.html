@@ -1,21 +1,31 @@
 <!doctype html>
 <html lang="en">
   <head>
+    <!--Bootstap  Stylesheet -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <meta charset="utf-8">
     <title>Filter Data Browser</title>
   </head>
   <body>
     <h1>Filter Data</h1>
-    <ul class="tweets"></ul>
+    <table class="tweets table">
+      <th>Twitter Feed</th>
+    </table>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <script src="/socket.io/socket.io.js"></script>
     <script>
       var socket = io.connect();
       jQuery(function ($) {
-        var tweetList = $('ul.tweets');
+        var tweetList = $('table.tweets');
         socket.on('tweet', function (data) {
           tweetList
-            .prepend('<li>' + data.user + ': ' + data.text + '</li>');
+            .prepend('<tr><td>' + data.user + ': ' + data.text + '</td></tr>');
         });
       });
     </script>
