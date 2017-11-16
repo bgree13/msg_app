@@ -15,7 +15,8 @@
   <body>
     <h1>Filter Data</h1>
     <table class="tweets table">
-      <th>Twitter Feed</th>
+      <th>User</th>
+      <th>Text</th>
     </table>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <script src="/socket.io/socket.io.js"></script>
@@ -25,7 +26,7 @@
         var tweetList = $('table.tweets');
         socket.on('tweet', function (data) {
           tweetList
-            .prepend('<tr><td>' + data.user + ': ' + data.text + '</td></tr>');
+            .after('<tr><td>' + data.user + '</td><td>' + data.text + '</td></tr>');
         });
       });
     </script>
