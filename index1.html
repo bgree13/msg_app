@@ -1,28 +1,23 @@
-<!DOCTYPE html>
-<html>
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.4/angular.min.js"></script>
-<script src="/socket.io/socket.io.js"></script>
-<body>
-
-<div ng-app="myApp" ng-controller="customersCtrl"> 
-
-<table>
-  <tr ng-repeat="x in names">
-    <td>{{ x.data }}</td>
-  </tr>
-</table>
-
-</div>
-
-<script>
-var socket = io.connect();
-var app = angular.module('myApp', []);
-app.controller('customersCtrl', function($scope, socket) {
-    socket.on('tweet', function (data) {
-    	 $scope.name = data.tweet
-    }
-});
-</script>
-
-</body>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Filter Data Browser</title>
+  </head>
+  <body>
+    <h1>Filter Data</h1>
+    <ul class="tweets"></ul>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      var socket = io.connect();
+      jQuery(function ($) {
+        var tweetList = $('ul.tweets');
+        socket.on('tweet', function (data) {
+          tweetList
+            .prepend('<li>' + data.user + ': ' + data.text + '</li>');
+        });
+      });
+    </script>
+  </body>
 </html>

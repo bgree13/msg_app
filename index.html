@@ -1,6 +1,29 @@
 <!doctype html>
 <html lang="en">
   <head>
+  	<style>
+	#sheetstyle {
+	    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+	    border-collapse: collapse;
+	    width: 100%;
+	}
+
+	tr:nth-child(even){background-color: #f2f2f2;}
+
+	tr:hover {background-color: #ddd;}
+	th {
+	    font-size: 18px;
+	    background-color: #4c75af;
+	    color: white;
+	    width: 500px;
+	}
+	td {
+	    padding: 8px;
+	    text-align: center;
+	}
+	</style>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1">
     <!--Bootstap  Stylesheet -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 
@@ -13,22 +36,28 @@
     <title>Filter Data Browser</title>
   </head>
   <body>
-    <h1>Filter Data</h1>
-    <table class="tweets table">
-      <th>User</th>
-      <th>Text</th>
-    </table>
+  <div class="container">	
+    <h1>Streaming Tweet Data</h1>
+    <div class="table-responsive">	
+    <table class="tweets table" id="sheetstyle">
+    		
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <script src="/socket.io/socket.io.js"></script>
     <script>
       var socket = io.connect();
+      var count = 0;
+      //console.log(count)
+
       jQuery(function ($) {
         var tweetList = $('table.tweets');
+        tweetList
+            .prepend('<th><u>User</u></th>' + '<th><u>Text</u></th>');
         socket.on('tweet', function (data) {
-          tweetList
-            .after('<tr><td>' + data.user + '</td><td>' + data.text + '</td></tr>');
-        });
+	    	tweetList
+	        	.after('<tr><td>' + data.user + '</td><td>' + data.text + '</td></tr>');    
+	      	});
       });
     </script>
+  </div>  
   </body>
 </html>
